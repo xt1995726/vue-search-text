@@ -3,7 +3,7 @@
     <div class="search-input">
       <input type="text" v-model="keyword">
       <span class="search-reset" @click="reset">&times;</span>
-      <button class="search-btn">搜了个索</button>
+      <button class="search-btn" @click="search">搜了个索</button>
     </div>
   </div>
 </template>
@@ -18,7 +18,11 @@ export default {
   methods: {
     reset() {
       this.keyword = '';
-
+    },
+    search() {
+      this.$router.push({
+        path: '/result',
+      });
     }
   },
 
@@ -26,20 +30,16 @@ export default {
 </script>
 
 <style scoped>
-.search-wrap {
-  margin-top: 70px;
-}
 .search-input {
   width: 600px;
-  margin: 30px auto;
   position: relative;
 }
 .search-input input {
-  border: 1px solid #e4e4e4;
+  border: 1px solid #aaaaaa;
   background: rgba(255, 255, 255, 0.8);
   box-sizing: border-box;
   width: 500px;
-  height: 45px;
+  height: 40px;
   font-size: 18px;
   padding-left: 10px;
   padding-right: 10px;
@@ -47,8 +47,20 @@ export default {
 }
 .search-reset {
   position: absolute;
-  right: 120px;
-  top: 12px;
+  right: 115px;
+  top: 10px;
   cursor: pointer;
+}
+.search-btn {
+  display: inline-block;
+  height: 40px;
+  width: 100px;
+  border: 1px solid rgba(200, 20, 50, 0.8);
+  background-color: rgba(200, 20, 50, 0.8);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
 }
 </style>
